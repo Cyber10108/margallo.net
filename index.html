@@ -2,30 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>John Ivan B. Margallo | Cyber Security Expert</title>
     <style>
-        /* --- Modern CSS Reset & Variables --- */
+        /* --- Modern CSS Reset & Variables (Red & Black Scheme) --- */
         :root {
-            --primary-green: #034b30;
-            --hover-green: #00563b;
+            --primary-red: #8b0000;
+            --hover-red: #ff0000;
             --text-light: #fafcf9;
-            --glass-bg: rgba(25, 82, 3, 0.2);
-            --glass-border: rgba(255, 255, 255, 0.25);
-            --cyber-neon: #00ff41;
+            --glass-bg: rgba(20, 0, 0, 0.7);
+            --glass-border: rgba(255, 0, 0, 0.2);
+            --cyber-crimson: #ff1a1a;
+            --bg-black: #050505;
         }
 
         * {
             box-sizing: border-box;
             scroll-behavior: smooth;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Roboto, -apple-system, Arial, sans-serif;
-            background-color: #070707;
-            background-image: url('https://i.imgur.com/TLB9pXG.gif');
+            background-color: var(--bg-black);
+            background-image: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://ibb.co/XxvQgdVQ');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -33,6 +35,7 @@
             color: var(--text-light);
             line-height: 1.6;
             font-size: 18px;
+            overflow-x: hidden;
         }
 
         /* --- Navigation --- */
@@ -42,48 +45,51 @@
             z-index: 1000;
             display: flex;
             justify-content: center;
-            padding: 20px;
+            padding: 15px;
         }
 
         .nav-logo-wrapper {
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(15px);
-            padding: 12px 35px;
+            -webkit-backdrop-filter: blur(15px);
+            padding: 10px 30px;
             border-radius: 50px;
             border: 1px solid var(--glass-border);
             display: flex;
             flex-direction: column;
             align-items: center;
-            box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.3);
+            width: fit-content;
         }
 
         .nav-logo-main {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
         }
 
-        .ac-insignia {
-            height: 28px;
+        /* SVG Logo Styling */
+        .logo-svg {
+            height: 35px;
             width: auto;
-            fill: var(--cyber-neon);
-            filter: drop-shadow(0 0 5px var(--cyber-neon));
+            fill: var(--cyber-crimson);
+            filter: drop-shadow(0 0 8px rgba(255, 26, 26, 0.8));
         }
 
         .logo-text {
             font-weight: bold;
-            letter-spacing: 5px;
-            color: var(--cyber-neon);
+            letter-spacing: 4px;
+            color: var(--cyber-crimson);
             text-transform: uppercase;
             font-size: 1.1rem;
+            text-shadow: 0 0 10px rgba(255, 26, 26, 0.5);
         }
 
         .logo-quote {
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--text-light);
-            opacity: 0.7;
+            letter-spacing: 1px;
+            color: #bbb;
             margin-top: 4px;
             font-style: italic;
             text-align: center;
@@ -91,31 +97,62 @@
 
         /* --- Hero Section --- */
         .hero {
-            height: 90vh;
+            min-height: 85vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 40px;
+            padding: 20px;
         }
 
         .hero h1 {
-            font-size: 4.5rem;
-            margin-bottom: 20px;
-            text-shadow: 0 0 30px rgba(0, 255, 65, 0.6);
+            font-size: clamp(2rem, 8vw, 4.5rem);
+            margin-bottom: 10px;
+            text-shadow: 0 0 30px rgba(255, 26, 26, 0.6);
             letter-spacing: -1px;
+            line-height: 1.1;
         }
 
         .hero p {
-            font-size: 1.8rem;
+            font-size: clamp(1rem, 4vw, 1.8rem);
             opacity: 0.9;
             max-width: 800px;
+            color: #ddd;
+            margin-bottom: 30px;
+        }
+
+        /* --- Triple Arrow Animation --- */
+        .arrow-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .arrow-container span {
+            display: block;
+            width: 20px;
+            height: 20px;
+            border-bottom: 3px solid var(--cyber-crimson);
+            border-right: 3px solid var(--cyber-crimson);
+            transform: rotate(45deg);
+            margin: -6px;
+            animation: arrowAnim 2s infinite;
+        }
+
+        .arrow-container span:nth-child(2) { animation-delay: -0.2s; }
+        .arrow-container span:nth-child(3) { animation-delay: -0.4s; }
+
+        @keyframes arrowAnim {
+            0% { opacity: 0; transform: rotate(45deg) translate(-10px, -10px); }
+            50% { opacity: 1; }
+            100% { opacity: 0; transform: rotate(45deg) translate(10px, 10px); }
         }
 
         /* --- Sections & Glass Containers --- */
         section {
-            padding: 100px 30px;
+            padding: 60px 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -126,53 +163,67 @@
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             border: 1px solid var(--glass-border);
-            padding: 50px;
-            margin-bottom: 50px;
-            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6);
+            padding: clamp(20px, 5vw, 50px);
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
         }
 
         h2 {
             text-align: center;
             text-transform: uppercase;
             letter-spacing: 5px;
-            font-size: 2.2rem;
-            margin-bottom: 60px;
-            border-bottom: 3px solid var(--primary-green);
+            font-size: clamp(1.5rem, 5vw, 2.2rem);
+            margin-bottom: 40px;
+            border-bottom: 3px solid var(--primary-red);
             display: inline-block;
             padding-bottom: 10px;
+            color: var(--cyber-crimson);
         }
 
-          /* Centering the section title containers */
         .section-title-container {
             width: 100%;
             display: flex;
             justify-content: center;
-            align-items: center;
-            text-align: center;
         }
 
-        /* --- Image Gallery Grid --- */
+        /* --- Neatly Organized Image Gallery --- */
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            justify-items: center;
-        }
-
-        .gallery img {
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
             width: 100%;
-            height: 320px;
-            object-fit: cover;
-            border-radius: 18px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 1px solid var(--glass-border);
-            cursor: pointer; /* Indicates it's clickable */
         }
 
-        .gallery img:hover {
-            transform: scale(1.08) translateY(-10px);
-            box-shadow: 0 0 30px rgba(0, 255, 65, 0.4);
-            z-index: 2;
+        .gallery-item {
+            aspect-ratio: 1 / 1;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            background: #111;
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            cursor: pointer;
+            display: block;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Mobile specific grid adjustment */
+        @media (max-width: 500px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            .round-box { padding: 15px; }
         }
 
         /* --- Buttons --- */
@@ -180,57 +231,33 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 25px;
-            margin: 60px 0;
+            gap: 15px;
+            margin: 40px 0;
         }
 
         .my-button {
-            background-color: var(--primary-green);
+            background-color: var(--primary-red);
             color: white;
-            padding: 18px 40px;
-            font-size: 1.1rem;
+            padding: 15px 30px;
+            font-size: 1rem;
             text-decoration: none;
             font-weight: bold;
-            border-radius: 12px;
+            border-radius: 10px;
             transition: all 0.3s ease;
             border: 1px solid transparent;
-            display: inline-block;
-            min-width: 260px;
+            flex: 1;
+            min-width: 240px;
+            max-width: 300px;
             text-align: center;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        .my-button:hover {
-            background-color: var(--hover-green);
-            box-shadow: 0 0 30px rgba(0, 255, 65, 0.5);
-            transform: translateY(-5px);
-            border-color: var(--cyber-neon);
-        }
-
-        /* --- Animated Arrows --- */
-        .arrow-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 40px;
-        }
-
-        .arrow-container span {
-            display: block;
-            width: 30px;
-            height: 30px;
-            border-bottom: 4px solid var(--text-light);
-            border-right: 4px solid var(--text-light);
-            transform: rotate(45deg);
-            margin: -8px;
-            animation: animate 2s infinite;
-        }
-
-        @keyframes animate {
-            0% { opacity: 0; transform: rotate(45deg) translate(-15px, -15px); }
-            50% { opacity: 1; }
-            100% { opacity: 0; transform: rotate(45deg) translate(15px, 15px); }
+        .my-button:hover, .my-button:active {
+            background-color: #600000;
+            box-shadow: 0 0 25px rgba(255, 26, 26, 0.4);
+            transform: translateY(-3px);
+            border-color: var(--cyber-crimson);
         }
 
         /* --- Lightbox / Image Viewer --- */
@@ -238,86 +265,59 @@
             display: none;
             position: fixed;
             z-index: 9999;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 10px;
         }
 
-        .lightbox.active {
-            display: flex;
-        }
+        .lightbox.active { display: flex; }
 
         .lightbox img {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 10px;
-            box-shadow: 0 0 50px rgba(0, 255, 65, 0.3);
-            border: 2px solid var(--glass-border);
+            max-width: 95%;
+            max-height: 85vh;
+            border-radius: 8px;
+            box-shadow: 0 0 50px rgba(255, 0, 0, 0.4);
+            border: 1px solid var(--cyber-crimson);
+            object-fit: contain;
         }
 
         .lightbox-close {
             position: absolute;
-            top: 30px;
-            right: 40px;
-            color: var(--text-light);
-            font-size: 3rem;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 2.5rem;
             cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .lightbox-close:hover {
-            color: var(--cyber-neon);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
         }
 
         /* --- Footer --- */
         footer {
-            background: rgba(0,0,0,0.95);
-            padding: 80px 30px;
+            background: #000;
+            padding: 60px 20px;
             text-align: center;
-            border-top: 2px solid var(--primary-green);
+            border-top: 1px solid var(--primary-red);
         }
 
-        footer h2 {
-            border-bottom: none;
-            margin-bottom: 30px;
-        }
+        footer h2 { border-bottom: none; margin-bottom: 20px; color: white; }
+        footer ul { list-style: none; padding: 0; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        footer a { color: #888; text-decoration: none; transition: 0.3s; }
+        footer a:hover { color: var(--cyber-crimson); }
 
-        footer ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-            margin-bottom: 40px;
-        }
-
-        footer a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: color 0.3s;
-        }
-
-        footer a:hover {
-            color: var(--cyber-neon);
-        }
-
-        /* --- Responsive Tweaks --- */
-        @media (max-width: 768px) {
-            body { font-size: 16px; }
-            .hero h1 { font-size: 2.8rem; }
-            .hero p { font-size: 1.2rem; }
-            .hero { height: 70vh; }
-            section { padding: 60px 20px; }
-            .round-box { padding: 25px; }
-            .my-button { min-width: 100%; }
+        /* iPhone/Android specific optimizations */
+        @supports (-webkit-touch-callout: none) {
+            .hero { min-height: -webkit-fill-available; }
         }
     </style>
 </head>
@@ -326,10 +326,9 @@
     <nav>
         <div class="nav-logo-wrapper">
             <div class="nav-logo-main">
-                <!-- Assassin's Creed Insignia SVG -->
-                <svg class="ac-insignia" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M50 0 L15 85 L35 85 L50 45 L65 85 L85 85 Z" />
-                    <path d="M50 120 C30 110 10 90 10 70 L25 70 C25 85 40 95 50 100 C60 95 75 85 75 70 L90 70 C90 90 70 110 50 120 Z" />
+                <!-- Custom SVG Assassin's Creed Logo -->
+                <svg class="logo-svg" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 0 L15 90 Q30 80 50 105 Q70 80 85 90 L50 0 Z M50 25 L75 80 Q65 75 50 85 Q35 75 25 80 L50 25 Z" />
                 </svg>
                 <div class="logo-text">CYBER1</div>
             </div>
@@ -339,7 +338,7 @@
     
     <header class="hero">
         <h1>John Ivan B. Margallo</h1>
-        <p>Expert in Systems Defense & Cybersecurity Infrastructure</p>
+        <p>Systems Defense Specialist & Cybersecurity Operative</p>
         <div class="arrow-container">
             <span></span>
             <span></span>
@@ -349,61 +348,60 @@
 
     <section id="Me">
         <div class="section-title-container">
-            <h2>About Me</h2>
+            <h2>Operative Profile</h2>
         </div>
         <div class="round-box gallery">
-            <img src="https://i.imgur.com/kqy1Nta.jpeg" alt="Identity" class="zoom-img">
-            <img src="https://i.imgur.com/Ukl855C.jpeg" alt="Identity" class="zoom-img">
-            <img src="https://i.imgur.com/5vjI99o.jpeg" alt="Identity" class="zoom-img">
-            <img src="https://i.imgur.com/6h3ge2R.jpeg" alt="Identity" class="zoom-img">
-            <img src="https://i.imgur.com/SCKEiHr.jpeg" alt="Identity" class="zoom-img">
-            <img src="https://i.imgur.com/dzgCy6h.jpeg" alt="Identity" class="zoom-img">
+            <div class="gallery-item"><img src="https://i.imgur.com/kqy1Nta.jpeg" alt="Identity" class="zoom-img"></div>
+            <div class="gallery-item"><img src="https://i.imgur.com/Ukl855C.jpeg" alt="Identity" class="zoom-img"></div>
+            <div class="gallery-item"><img src="https://i.imgur.com/5vjI99o.jpeg" alt="Identity" class="zoom-img"></div>
+            <div class="gallery-item"><img src="https://i.imgur.com/6h3ge2R.jpeg" alt="Identity" class="zoom-img"></div>
+            <div class="gallery-item"><img src="https://i.imgur.com/SCKEiHr.jpeg" alt="Identity" class="zoom-img"></div>
+            <div class="gallery-item"><img src="https://i.imgur.com/dzgCy6h.jpeg" alt="Identity" class="zoom-img"></div>
         </div>
 
         <div class="btn-container">
-            <a href="https://t.me/Cyber100190" class="my-button">View My Work</a>
-            <a href="https://paypal.me/JMargallo699" class="my-button">Support My Research</a>
+            <a href="https://t.me/Cyber100190" class="my-button">Access Network</a>
+            <a href="https://paypal.me/JMargallo699" class="my-button">Fund Research</a>
         </div>
     </section>
 
     <section id="projects">
         <div class="section-title-container">
-            <h2>Credentials & Certifications</h2>
+            <h2>Intel & Certifications</h2>
         </div>
         
         <div class="round-box">
-            <h3 style="text-align: center; margin-bottom: 10px;">Advanced Security Portfolio</h3>
-            <p style="text-align: center; margin-bottom: 40px; font-size: 1.1rem; opacity: 0.8;">Verified expertise in system penetration testing, network defense, and vulnerability assessment across enterprise environments.</p>
+            <h3 style="text-align: center; margin-bottom: 20px; color: var(--cyber-crimson);">Verified Credentials</h3>
             <div class="gallery">
-                <img src="https://i.imgur.com/bqQsxF5.jpeg" alt="Cert 1" class="zoom-img">
-                <img src="https://i.imgur.com/wnaY0MJ.png" alt="Cert 2" class="zoom-img">
-                <img src="https://i.imgur.com/5rHDHSq.png" alt="Cert 3" class="zoom-img">
-                <img src="https://i.imgur.com/ul2NERC.png" alt="Cert 4" class="zoom-img">
-                <img src="https://i.imgur.com/XgxLLz2.png" alt="Cert 5" class="zoom-img">
-                <img src="https://i.imgur.com/KjQuHzs.png" alt="Cert 6" class="zoom-img">
-                <img src="https://i.imgur.com/ygFiLra.png" alt="Cert 7" class="zoom-img">
-                <img src="https://i.imgur.com/NqpUosw.png" alt="Cert 8" class="zoom-img">
-                <img src="https://i.imgur.com/kDgvPmI.png" alt="Cert 9" class="zoom-img">
-                <img src="https://i.imgur.com/1B5Nl5R.png" alt="Cert 10" class="zoom-img">
+                <div class="gallery-item"><img src="https://i.imgur.com/bqQsxF5.jpeg" alt="Cert 1" class="zoom-img"></div>
+                <div class="gallery-item"><img src="https://i.imgur.com/wnaY0MJ.png" alt="Cert 2" class="zoom-img"></div>
+                <div class="gallery-item"><img src="https://i.imgur.com/5rHDHSq.png" alt="Cert 3" class="zoom-img"></div>
+                <div class="gallery-item"><img src="https://i.imgur.com/ul2NERC.png" alt="Cert 4" class="zoom-img"></div>
+                <div class="gallery-item"><img src="https://i.imgur.com/XgxLLz2.png" alt="Cert 5" class="zoom-img"></div>
+                <div class="gallery-item"><img src="https://i.imgur.com/KjQuHzs.png" alt="Cert 6" class="zoom-img"></div>
+                <div class="gallery-item"><img src="https://i.imgur.com/ygFiLra.png" alt="Cert 7" class="zoom-img"></div>
+                <div class="gallery-item"><img src="https://i.imgur.com/NqpUosw.png" alt="Cert 8" class="zoom-img"></div>
+                <div class="gallery-item"><img src="https://i.imgur.com/kDgvPmI.png" alt="Cert 9" class="zoom-img"></div>
+                <div class="gallery-item"><img src="https://i.imgur.com/Q0SEhcJ.png" alt="Cert 10" class="zoom-img"></div>
             </div>
         </div>
         
         <div style="text-align: center;">
-            <a href="https://soulreaperkayn3-a11y.github.io/computer-shop.com/" class="my-button">Visit Computer Shop</a>
+            <a href="https://soulreaperkayn3-a11y.github.io/computer-shop.com/" class="my-button">Computer Shop Entry</a>
         </div>
     </section>
 
-    <footer id="contact">
-        <h2>Secure Contact</h2>
+    <footer>
+        <h2>End Transmission</h2>
         <ul>
-            <li><a href="#">Back to Top</a></li>
-            <li><a href="#projects">Certifications</a></li>
-            <li><a href="mailto:ivanpogi399@gmail.com">Secure Email</a></li>
+            <li><a href="#">Back to top</a></li>
+            <li><a href="#projects">Archives</a></li>
+            <li><a href="mailto:ivanpogi399@gmail.com">Encrypted Mail</a></li>
         </ul>
-        <div style="margin: 30px 0; opacity: 0.8; font-size: 1.1rem;">
-            <p>Direct Support: 09513449531 | 09569719187</p>
+        <div style="margin: 20px 0; opacity: 0.6; font-size: 0.9rem;">
+            <p>Comms: 09513449531 | 09569719187</p>
         </div>
-        <p style="font-size: 0.9rem; opacity: 0.5; letter-spacing: 2px;">© 2025 CYBER1 SECURITY SOLUTIONS • BUILT FOR PERFORMANCE</p>
+        <p style="font-size: 0.7rem; opacity: 0.4; letter-spacing: 2px;">© 2025 CYBER1 SECURITY SOLUTIONS • BUILT FOR PERFORMANCE</p>
     </footer>
 
     <!-- Lightbox Structure -->
@@ -413,7 +411,6 @@
     </div>
 
     <script>
-        // Lightbox Logic
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
         const zoomImages = document.querySelectorAll('.zoom-img');
@@ -423,14 +420,13 @@
             img.addEventListener('click', () => {
                 lightbox.classList.add('active');
                 lightboxImg.src = img.src;
-                // Prevent scrolling while lightbox is open
                 document.body.style.overflow = 'hidden';
             });
         });
 
         const closeLightbox = () => {
             lightbox.classList.remove('active');
-            document.body.style.overflow = 'auto';
+            document.body.style.overflow = '';
         };
 
         closeBtn.addEventListener('click', closeLightbox);
@@ -440,11 +436,9 @@
             }
         });
 
-        // Close on ESC key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeLightbox();
         });
     </script>
-
 </body>
 </html>
